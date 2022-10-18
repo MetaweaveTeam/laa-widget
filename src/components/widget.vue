@@ -35,7 +35,7 @@ const query = `{
 
 run(query).then((result) => {
   var address = result.data.transactions.edges[0].node.owner.address;
-  account.get('64k1zby9gaqwkxTuznTmY2mKpdP0RJzasLml8BLjwmM').then((user: ArAccount) => {
+  account.get(address).then((user: ArAccount) => {
 
     const { setTxid, setAddr, setHandle, setProfile } = store;
 
