@@ -1,6 +1,6 @@
-import { ref, computed, reactive } from "vue";
+import { ref, reactive } from "vue";
 import { defineStore } from "pinia";
-import { ArProfile } from 'arweave-account';
+import type { ArProfile } from "arweave-account";
 
 export const useAccountStore = defineStore("account", () => {
   const txid = ref();

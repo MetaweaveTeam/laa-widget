@@ -4,6 +4,6 @@ import Widget from '@/components/widget.vue';
 
 <template>
   <main>
-    <Widget msg="Hello World!" />
+    <Widget />
   </main>
 </template>

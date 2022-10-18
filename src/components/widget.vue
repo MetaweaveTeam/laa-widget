@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import Account, { ArAccount, ArProfile } from 'arweave-account';
+import Account from 'arweave-account';
+import type { ArAccount } from 'arweave-account';
 import { run } from 'ar-gql';
 import { useAccountStore } from '@/stores/account';
 import Twitter from '@/components/icons/Twitter.vue';
