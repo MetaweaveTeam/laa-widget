@@ -33,59 +33,70 @@ const query = `{
   }
 }`;
 
+const { setTxid, setAddr, setHandle, setProfile, setIsLoading, setError } = store;
+
 run(query).then((result) => {
-  var address = result.data.transactions.edges[0].node.owner.address;
-  account.get(address).then((user: ArAccount) => {
-
-    const { setTxid, setAddr, setHandle, setProfile } = store;
-
-    setTxid(user.txid);
-    setAddr(user.addr);
-    setHandle(user.handle);
-    setProfile(user.profile);
-  }).catch((e) => {
-    console.log(JSON.stringify(e));
-  });
+  const address = result.data.transactions.edges[0].node.owner.address;
+  console.log("address: ", address);
+  return account.get(address);
 })
-  .catch((e) => {
-    console.log(JSON.stringify(e));
-  })
-
+.then((user: ArAccount) => {
+  console.log("user: ", user);
+  setTxid(user.txid);
+  setAddr(user.addr);
+  setHandle(user.handle);
+  setProfile(user.profile);
+  setIsLoading(false);
+})
+.catch(e => {
+  setError(e);
+  setIsLoading(false);
+})
 </script>
 
 <template>
   <div class="card w-96 card_background shadow-xl">
     <div class="card-body">
       <div class="justify-center text-center">
-        <div class="avatar">
-          <div class="w-24 shadow-lg mask mask-hexagon">
-            <a :href="'https://r.metaweave.xyz/u/' + store.addr">
-              <img :src="store.profile.avatarUrl" />
-            </a>
-          </div>
+        <div v-if="store.isLoading">
+          LOADING
         </div>
-        <div v-if="store.handle" class="pt-1">
-          <a :href="'https://r.metaweave.xyz/u/' + store.addr" class="text-slate-200 text-sm">{{store.handle}}</a>
+        <div v-else-if="store.error.length > 0">
+          {{store.error}}
         </div>
-        <div v-if="store.profile.name" class="pt-2">
-          <p class="text-white text-lg">{{store.profile.name}}</p>
-        </div>
-        <div v-if="store.profile.bio" class="pt-1">
-          <p class="text-slate-200">{{store.profile.bio}}</p>
-        </div>
-        <div class="pt-4 mx-auto flex justify-center">
-          <a class="px-4" v-if="store.profile.links.twitter" target="_blank"
-            :href="'https://twitter.com/'+store.profile.links.twitter">
-            <Twitter class="text-white" />
-          </a>
-          <a class="px-4" v-if="store.profile.links.github" target="_blank"
-            :href="'https://github.com/'+store.profile.links.github">
-            <GitHub class="text-white" />
-          </a>
-          <a class="px-4" v-if="store.profile.links.instagram" target="_blank"
-            :href="'https://instagram.com/'+store.profile.links.instagram">
-            <Instagram class="text-white" />
-          </a>
+        <div v-else>
+          <span>
+            <div class="avatar">
+              <div class="w-24 shadow-lg mask mask-hexagon">
+                <a :href="'https://r.metaweave.xyz/u/' + store.addr">
+                  <img :src="store.profile.avatarUrl" />
+                </a>
+              </div>
+            </div>
+            <div v-if="store.handle" class="pt-1">
+              <a :href="'https://r.metaweave.xyz/u/' + store.addr" class="text-slate-200 text-sm">{{store.handle}}</a>
+            </div>
+            <div v-if="store.profile.name" class="pt-2">
+              <p class="text-white text-lg">{{store.profile.name}}</p>
+            </div>
+            <div v-if="store.profile.bio" class="pt-1">
+              <p class="text-slate-200">{{store.profile.bio}}</p>
+            </div>
+            <div class="pt-4 mx-auto flex justify-center">
+              <a class="px-4" v-if="store.profile.links.twitter" target="_blank"
+                :href="'https://twitter.com/'+store.profile.links.twitter">
+                <Twitter class="text-white" />
+              </a>
+              <a class="px-4" v-if="store.profile.links.github" target="_blank"
+                :href="'https://github.com/'+store.profile.links.github">
+                <GitHub class="text-white" />
+              </a>
+              <a class="px-4" v-if="store.profile.links.instagram" target="_blank"
+                :href="'https://instagram.com/'+store.profile.links.instagram">
+                <Instagram class="text-white" />
+              </a>
+            </div>
+          </span>
         </div>
       </div>
     </div>

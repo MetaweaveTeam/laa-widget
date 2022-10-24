@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 import type { ArProfile } from "arweave-account";
 
 export const useAccountStore = defineStore("account", () => {
+  const isLoading = ref(true);
+  const error = ref("");
   const txid = ref();
   const addr = ref();
   const handle = ref();
@@ -62,5 +64,13 @@ export const useAccountStore = defineStore("account", () => {
     arProfile = profile;
   }
 
-  return { txid, addr, handle, profile, arProfile, arAccount, setTxid, setAddr, setHandle, setProfile }
+  function setIsLoading(newLoader: boolean) {
+    isLoading.value = newLoader;
+  }
+
+  function setError(newErr: string) {
+    error.value = newErr;
+  }
+
+  return { error, isLoading, txid, addr, handle, profile, arProfile, arAccount, setTxid, setAddr, setHandle, setProfile, setIsLoading, setError }
 });
