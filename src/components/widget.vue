@@ -104,7 +104,6 @@ run(query)
   display: flex;
   width: 24rem;
   height: 24rem;
-  background: #1A1A1A;
   border-radius: 2rem;
   padding: 1rem;
   box-sizing: border-box;
