@@ -57,7 +57,7 @@ run(query)
 </script>
 
 <template>
-  <div class="widget">
+  <div class="widget shadow-xl">
     <div v-if="store.isLoading">
       <span class="loading"></span>
     </div>
@@ -68,7 +68,7 @@ run(query)
       <div class="avatar">
         <div class="w-24 shadow-lg mask mask-hexagon">
           <a :href="'https://r.metaweave.xyz/u/' + store.addr">
-            <img :src="store.profile.avatarUrl" />
+            <img :src="store.profile.avatarUrl" class="bg-white" />
           </a>
         </div>
       </div>
@@ -111,6 +111,12 @@ run(query)
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
+  background: rgb(188, 0, 255);
+  background: -moz-linear-gradient(38deg, rgba(188, 0, 255, 1) 19%, rgba(248, 23, 181, 1) 100%);
+  background: -webkit-linear-gradient(38deg, rgba(188, 0, 255, 1) 19%, rgba(248, 23, 181, 1) 100%);
+  background: linear-gradient(38deg, rgba(188, 0, 255, 1) 19%, rgba(248, 23, 181, 1) 100%);
 }
 
 .loading {
@@ -121,5 +127,9 @@ run(query)
   border-radius: 50%;
   border-top-color: #1A1A1A;
   animation: spin 1s ease-in-out infinite;
+}
+
+a {
+  text-shadow: 0px 0px 20px #000000;
 }
 </style>
