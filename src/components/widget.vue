@@ -45,15 +45,13 @@ run(query)
     setAddr(user.addr);
     setHandle(user.handle);
     setProfile(user.profile);
+    setIsLoading(false);
   })
   .catch((e) => {
     console.log(e);
     setError(e);
-  })
-  .finally(() => {
     setIsLoading(false);
   });
-
 </script>
 
 <template>
