@@ -64,13 +64,13 @@ export const useAccountStore = defineStore("account", () => {
     arProfile = profile;
   }
 
-  function setIsLoading(newLoader: boolean) {
-    isLoading.value = newLoader;
+  function setIsLoading(newIsLoading: boolean) {
+    isLoading.value = newIsLoading;
   }
 
-  function setError(newErr: string) {
-    error.value = newErr;
+  function setError(newError: string) {
+    error.value = newError;
   }
 
-  return { error, isLoading, txid, addr, handle, profile, arProfile, arAccount, setTxid, setAddr, setHandle, setProfile, setIsLoading, setError }
+  return { txid, addr, handle, profile, arProfile, arAccount, isLoading, error, setTxid, setAddr, setHandle, setProfile, setIsLoading, setError };
 });
