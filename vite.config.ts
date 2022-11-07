@@ -12,4 +12,17 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  build: {
+    outDir: fileURLToPath(new URL("./dist", import.meta.url)),
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL("./index.html", import.meta.url)),
+      },
+      output: {
+        entryFileNames: "widget.js",
+        chunkFileNames: "widget.js",
+        assetFileNames: "[name].[ext]",
+      },
+    },
+  },
 });
