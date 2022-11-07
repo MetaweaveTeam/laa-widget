@@ -101,8 +101,6 @@ run(query)
 <style scoped>
 .widget {
   display: flex;
-  width: 24rem;
-  height: 24rem;
   border-radius: 2rem;
   padding: 1rem;
   box-sizing: border-box;
