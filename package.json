@@ -1,6 +1,6 @@
 {
   "name": "latest-arprofile",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Display the latest created or updated ArProfile.",
   "scripts": {
     "dev": "vite",

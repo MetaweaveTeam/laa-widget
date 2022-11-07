@@ -3,7 +3,7 @@ import Widget from '@/components/widget.vue';
 </script>
 
 <template>
-  <main>
+  <main class="p-8">
     <Widget />
   </main>
 </template>

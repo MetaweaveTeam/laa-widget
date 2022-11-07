@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Account from 'arweave-account';
-import type { ArAccount } from 'arweave-account';
-import { run } from 'ar-gql';
-import { useAccountStore } from '@/stores/account';
-import Twitter from '@/components/icons/Twitter.vue';
-import GitHub from '@/components/icons/GitHub.vue';
-import Instagram from '@/components/icons/Instagram.vue';
+import Account from "arweave-account";
+import type { ArAccount } from "arweave-account";
+import { run } from "ar-gql";
+import { useAccountStore } from "@/stores/account";
+import Twitter from "@/components/icons/Twitter.vue";
+import GitHub from "@/components/icons/GitHub.vue";
+import Instagram from "@/components/icons/Instagram.vue";
 
 const account = new Account();
 const store = useAccountStore();
@@ -33,7 +33,8 @@ const query = `{
   }
 }`;
 
-const { setTxid, setAddr, setHandle, setProfile, setIsLoading, setError } = store;
+const { setTxid, setAddr, setHandle, setProfile, setIsLoading, setError } =
+  store;
 
 run(query)
   .then((result) => {
@@ -121,7 +122,7 @@ run(query)
   height: 2rem;
   border: 0.25rem solid #fff;
   border-radius: 50%;
-  border-top-color: #1A1A1A;
+  border-top-color: #1a1a1a;
   animation: spin 1s ease-in-out infinite;
 }
 
