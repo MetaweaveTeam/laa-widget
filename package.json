@@ -1,23 +1,27 @@
 {
-  "name": "laa-widget",
-  "version": "1.0.0",
+  "name": "latest-arprofile",
+  "version": "1.0.4",
+  "description": "Display the latest created or updated ArProfile.",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview --port 4173",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "deploy": "node deploy.mjs"
   },
   "dependencies": {
     "ar-gql": "^0.0.6",
-    "arweave-account": "^1.3.3",
+    "arweave-account": "^1.3.4",
     "daisyui": "^2.31.0",
     "pinia": "^2.0.21",
+    "vite-plugin-css-injected-by-js": "^2.1.1",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
+    "arweave": "^1.11.6",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^16.11.56",
     "@vitejs/plugin-vue": "^3.0.3",
